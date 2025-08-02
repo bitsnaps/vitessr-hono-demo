@@ -4,9 +4,6 @@ const port = 8080
 
 const api = require('./api')
 
-app.get('/', (req, res) => {
-  res.json('Hello World!')
-})
 
 // Serve every static asset route
 for (const asset of ssr.assets || []) {

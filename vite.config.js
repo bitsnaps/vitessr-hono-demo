@@ -1,7 +1,8 @@
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import viteSSR from 'vite-ssr/plugin'
-import api from './app/api'
+import api from './express-app/api' // express.js
+// import api from './hono-app/api' // Hono
 
 
 // https://vite.dev/config/

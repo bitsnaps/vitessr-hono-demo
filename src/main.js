@@ -53,9 +53,7 @@ export default viteSSR(App, { routes }, ({ app, router, isClient, url, initialSt
           console.error(error)
           // redirect to error route
         }
-  
-        next()    
-
+        next();
   })
 
   return { head }
