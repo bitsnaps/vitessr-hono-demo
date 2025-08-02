@@ -2,12 +2,17 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "dev": "vite-ssr --port 1337",
+    "dev:spa": "vite --port 1337 --force",
+    "build": "vite-ssr build",
+    "serve:node": "node ../app/index vue",
+    "clean": "rm -rf ./dist"
   },
   "dependencies": {
-    "vue": "^3.5.17"
+    "@vueuse/head": "^2.0.0",
+    "vite-ssr": "^0.17.2",
+    "vue": "^3.5.17",
+    "vue-router": "^4.5.1"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.2.4",

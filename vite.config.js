@@ -1,7 +1,25 @@
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
+import viteSSR from 'vite-ssr/plugin'
+import api from './app/api'
+
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [vue()]
+  server: {
+    fs: {
+      // The API logic is in outside of the project
+      strict: false,
+    },
+  },  
+  plugins: [
+    viteSSR(),
+    vue(),
+    {
+      // Mock API during development
+      configureServer({ middlewares }) {
+        api.forEach(({ route, handler }) => middlewares.use(route, handler))
+      },
+    },    
+  ]
 });
