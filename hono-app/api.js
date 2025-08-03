@@ -1,17 +1,19 @@
-// import { Hono } from 'hono'
-const { Hono } = require('hono');
+module.exports = [
+  {
+    route  : '/api/getProps',
+    method : 'get',
+    handler(req, res) {
+      const url = new URL('http://e.c' + req.originalUrl)
+      console.log('getProps', url.searchParams.toString())
 
-const api = new Hono();
-
-// api.get('/', (c) => c.json({success: 'ok'}));
-
-api.get('/getProps', (c) => c.json({
-    name: 'routeName',
-    server: true,
-    msg: 'This is page ' + 'routeName'.toUpperCase(),
-  }))
-
-// export default api
-
-// module.exports = { api };
-module.exports = api;
+      const routeName = url.searchParams.get('name') || ''
+      res.end(
+        JSON.stringify({
+          name  : routeName,
+          server: true,
+          msg   : 'This is page ' + routeName.toUpperCase(),
+        })
+      )
+    },
+  },
+]
